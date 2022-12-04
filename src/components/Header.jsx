@@ -23,7 +23,7 @@ const Header = () => {
 	return (
 		<header
 			ref={refContainer}
-			className="flex flex-col items-center justify-center w-full min-h-screen bg-[url('/src/assets/hero.jpeg')] bg-contain md:bg-cover bg-no-repeat sticky top-0 -z-10"
+			className="flex flex-col items-center justify-center w-full min-h-screen bg-[url('/src/assets/hero-lg.jpeg')] lg:bg-[url('/src/assets/hero.jpeg')] bg-contain md:bg-cover bg-no-repeat sticky top-0 -z-10"
 			style={{ transform: `translateY(-${progress * 20}vh)` }}
 		>
 			<div className='bg-white opacity-70 w-full h-full absolute'></div>
@@ -34,9 +34,9 @@ const Header = () => {
 			>
 				<img src={logoURL} alt='' className='h-[160px] w-auto' />
 			</div>
-			<div className='text-center z-10 flex-1 p-0 lg:p-[18rem] flex flex-col items-center justify-center drop-shadow-md'>
-				<h1 className='text-2xl lg:text-6xl font-bold'>TAOwork</h1>
-				<p className='font-thin text-lg lg:text-3xl'>life is harsh without C</p>
+			<div className='text-center z-10 flex-1 p-0 lg:p-[10rem] mt-[4rem] xl:mt-0 xl:p-[18rem] flex flex-col items-center justify-center drop-shadow-md'>
+				<h1 className='text-5xl lg:text-6xl font-bold'>TAOwork</h1>
+				<p className='font-thin text-xl lg:text-3xl'>life is harsh without C</p>
 			</div>
 			<div
 				className={`flex-grow-0 z-10 pb-5 md:pb-3 transition-all duration-1000 ${

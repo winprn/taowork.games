@@ -11,7 +11,7 @@ const options = {
 };
 
 const Legal = () => {
-	const [numPages, setNumPages] = useState(null);
+	const [numPages, setNumPages] = useState(0);
 
 	function onDocumentLoadSuccess({ numPages }) {
 		setNumPages(numPages);
@@ -24,14 +24,14 @@ const Legal = () => {
 				<div className='Example__container flex items-center justify-center'>
 					<div className='Example__container__document flex items-center justify-center'>
 						<Document
-							className='flex '
+							className='flex flex-col xl:flex-row'
 							file={contract}
 							onLoadSuccess={onDocumentLoadSuccess}
 							options={options}
 						>
 							{Array.from(new Array(numPages), (el, index) => (
 								<Page
-									width='500'
+									width='420'
 									key={`page_${index + 1}`}
 									pageNumber={index + 1}
 								/>
