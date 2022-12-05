@@ -3,6 +3,8 @@ import { Document, Page } from 'react-pdf/dist/esm/entry.vite';
 import 'react-pdf/dist/esm/Page/TextLayer.css';
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 import contract from '../assets/contract.pdf';
+import { useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 const options = {
 	cMapUrl: 'cmaps/',
@@ -12,10 +14,17 @@ const options = {
 
 const Legal = () => {
 	const [numPages, setNumPages] = useState(0);
+	const [width, setWidth] = useState(window.innerWidth);
 
 	function onDocumentLoadSuccess({ numPages }) {
 		setNumPages(numPages);
 	}
+
+	useEffect(() => {
+		window.addEventListener('resize', setWidth(window.innerWidth));
+
+		return () => window.removeEventListener('resize', setWidth);
+	}, []);
 
 	return (
 		<section className='bg-white text-center pt-20 min-h-screen'>
@@ -30,11 +39,18 @@ const Legal = () => {
 							options={options}
 						>
 							{Array.from(new Array(numPages), (el, index) => (
-								<Page
-									width='420'
-									key={`page_${index + 1}`}
-									pageNumber={index + 1}
-								/>
+								<motion.div
+									initial={{ opacity: 0, translateX: -100 }}
+									transition={{ duration: 0.5 }}
+									whileInView={{ opacity: 1, translateX: 0 }}
+									viewport={{ once: true }}
+								>
+									<Page
+										width={width >= 1024 ? '500' : '350'}
+										key={`page_${index + 1}`}
+										pageNumber={index + 1}
+									/>
+								</motion.div>
 							))}
 						</Document>
 					</div>

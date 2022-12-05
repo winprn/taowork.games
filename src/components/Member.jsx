@@ -2,6 +2,8 @@ import React from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { useState, Fragment } from 'react';
 import infoIcon from '../assets/information-circle.svg';
+import closeIcon from '../assets/close.svg';
+import { motion } from 'framer-motion';
 
 const Member = ({ imgSrc, name, id, portrait, fullName, desc }) => {
 	const [isOpen, setIsOpen] = useState(false);
@@ -16,9 +18,12 @@ const Member = ({ imgSrc, name, id, portrait, fullName, desc }) => {
 
 	return (
 		<>
-			<div
+			<motion.div
 				className='flex flex-col relative items-center justify-center'
 				onClick={openModal}
+				initial={{ opacity: 0, scale: 0.5 }}
+				transition={{ duration: 0.8 }}
+				whileInView={{ opacity: 1, scale: 1 }}
 			>
 				<img src={imgSrc} alt='' className='h-[230px] w-auto' />
 				<div className='relative'>
@@ -30,7 +35,7 @@ const Member = ({ imgSrc, name, id, portrait, fullName, desc }) => {
 					/>
 				</div>
 				<p className='text-xl'>{id}</p>
-			</div>
+			</motion.div>
 
 			<Transition appear show={isOpen} as={Fragment}>
 				<Dialog as='div' className='relative z-10' onClose={closeModal}>
@@ -57,10 +62,19 @@ const Member = ({ imgSrc, name, id, portrait, fullName, desc }) => {
 								leaveFrom='opacity-100 scale-100'
 								leaveTo='opacity-0 scale-95'
 							>
-								<Dialog.Panel className='w-full max-w-2xl transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all'>
-									<div className='mt-2 flex gap-12'>
-										<div className='text-center w-[40%]'>
-											<img src={portrait} alt='' />
+								<Dialog.Panel className='w-full max-w-2xl transform relative overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all'>
+									<img
+										className='absolute w-[30px] lg:right-10'
+										src={closeIcon}
+										onClick={closeModal}
+									/>
+									<div className='mt-2 flex flex-col items-center justify-center lg:flex-row gap-12'>
+										<div className='text-center w-min'>
+											<img
+												className='min-w-[200px] h-auto'
+												src={portrait}
+												alt=''
+											/>
 											<h3 className='font-semibold text-xl'>Member</h3>
 										</div>
 										<div className='flex flex-col justify-center'>
