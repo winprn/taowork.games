@@ -10,10 +10,14 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.7.4",
+    "@heroicons/react": "^2.0.13",
     "framer-motion": "^7.6.18",
+    "markdown-to-jsx": "^7.1.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-pdf": "^6.2.0"
+    "react-markdown": "^8.0.4",
+    "react-pdf": "^6.2.0",
+    "react-router-dom": "^6.4.4"
   },
   "devDependencies": {
     "@types/react": "^18.0.24",

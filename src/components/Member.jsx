@@ -5,7 +5,7 @@ import infoIcon from '../assets/information-circle.svg';
 import closeIcon from '../assets/close.svg';
 import { motion } from 'framer-motion';
 
-const Member = ({ imgSrc, name, id, portrait, fullName, desc }) => {
+const Member = ({ imgSrc, name, id, portrait, fullName, desc, title }) => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	const openModal = () => {
@@ -75,7 +75,7 @@ const Member = ({ imgSrc, name, id, portrait, fullName, desc }) => {
 												src={portrait}
 												alt=''
 											/>
-											<h3 className='font-semibold text-xl'>Member</h3>
+											<h3 className='font-semibold text-xl'>{title}</h3>
 										</div>
 										<div className='flex flex-col justify-center'>
 											{desc.map((el) => {

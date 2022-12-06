@@ -26,6 +26,7 @@ const data = [
 			'Đặc điểm nhận dạng: tóc xù, mặc đồ giống trap boy, dạo này ít thấy tại trường vì nó hay cúp học',
 			'Vai trò trong nhóm: Thành viên (làm hề zui zẻ đồ đó, lấy người khác ra làm trò đùa đồ đó)',
 		],
+		title: 'ddafo 🍑',
 	},
 	{
 		imgSrc: huy,
@@ -41,6 +42,7 @@ const data = [
 			'Đặc điểm nhận dạng: Đô con, hay mặc đồ đen, thủ khoa A1 Bình Định, có thể tìm thấy vào giờ nghỉ trưa tại I35 hoặc I23',
 			'Vai trò trong nhóm: Thành viên (hoàn thành deadline đúng hạn và gánh môn Toán rời rạc cho mấy đứa khác)',
 		],
+		title: 'Pháp sư toán rời rạc 🧑‍🏫',
 	},
 	{
 		imgSrc: man,
@@ -56,6 +58,7 @@ const data = [
 			'Đặc điểm nhận dạng: Cao, ốm, mặt mụn, dễ tìm thấy tại thư viện tầng 10 tòa I, HCMUS 🙂',
 			'Vai trò trong nhóm: Trưởng nhóm (hay nói đúng hơn là kẻ đi dọa nạt trừ % của người khác)',
 		],
+		title: 'Nhóm trưởng 🌟',
 	},
 	{
 		imgSrc: minh,
@@ -71,6 +74,7 @@ const data = [
 			'Đặc điểm nhận dạng: Đô con, nhìn hiền hiền, sáng sủa đẹp trai, hay được người khác ORZ, luôn luôn có thể tìm thấy 🦭 tại Selab',
 			'Vai trò trong nhóm: Thành viên (bị mọi người dí deadline)',
 		],
+		title: 'Ngài SEALLL 🙇‍♂️',
 	},
 	{
 		imgSrc: quynh,
@@ -86,6 +90,7 @@ const data = [
 			'Đặc điểm nhận dạng: tóc ngắn, hay mặc váy đi học, nhìn ngáo ngáo, hay đấm (iu) linh tinh, gọi là Sún vì bị sún thật',
 			'Vai trò trong nhóm: Timekeeper, thư kí (nhắc deadline, có khi quên nhắc, làm đẹp cho đời và mục tiêu bị chọc)',
 		],
+		title: 'Sún 🦷',
 	},
 ];
 
@@ -104,6 +109,7 @@ const About = () => {
 								name={el.name}
 								id={el.id}
 								desc={el.desc}
+								title={el.title}
 							/>
 						);
 					})}

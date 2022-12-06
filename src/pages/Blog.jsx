@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
-import 'react-pdf/dist/esm/Page/TextLayer.css';
-import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
+import { useLoaderData } from 'react-router-dom';
+import { getBlogById } from '../utils/getBlog';
 import contract from '../assets/contract.pdf';
-import { useEffect } from 'react';
+import { Document, Page } from 'react-pdf/dist/esm/entry.vite';
 import { motion } from 'framer-motion';
+import { useEffect } from 'react';
+
+export const loader = ({ params }) => {
+	console.log(params);
+	return getBlogById(parseInt(params.blogId));
+};
 
 const options = {
 	cMapUrl: 'cmaps/',
@@ -11,41 +17,43 @@ const options = {
 	standardFontDataUrl: 'standard_fonts/',
 };
 
-const Legal = () => {
+const Blog = () => {
 	const [numPages, setNumPages] = useState(0);
-	const [width, setWidth] = useState(window.innerWidth);
-
+	const [width, setWidth] = useState(0);
 	function onDocumentLoadSuccess({ numPages }) {
 		setNumPages(numPages);
 	}
+	const blog = useLoaderData();
 
 	useEffect(() => {
-		window.addEventListener('resize', setWidth(window.innerWidth));
-
-		return () => window.removeEventListener('resize', setWidth);
+		setWidth(window.innerWidth);
+		console.log(blog);
 	}, []);
 
 	return (
-		<section className='bg-white text-center pt-20 min-h-screen'>
-			<h2 className='text-2xl lg:text-4xl'>Legals</h2>
+		<main className='flex flex-col items-center justify-center'>
+			<div className='container flex flex-col items-center justify-center'>
+				<h1 className='text-2xl lg:text-3xl font-bold'>{blog[0].title}</h1>
+			</div>
 			<div className='Example'>
 				<div className='Example__container flex items-center justify-center'>
 					<div className='Example__container__document flex items-center justify-center'>
 						<Document
-							className='flex flex-col xl:flex-row'
-							file={contract}
 							onLoadSuccess={onDocumentLoadSuccess}
+							className='flex flex-col xl:flex-row'
+							file={blog[0].file}
 							options={options}
 						>
 							{Array.from(new Array(numPages), (el, index) => (
 								<motion.div
+									key={index}
 									initial={{ opacity: 0, translateX: -100 }}
 									transition={{ duration: 0.5 }}
 									whileInView={{ opacity: 1, translateX: 0 }}
 									viewport={{ once: true }}
 								>
 									<Page
-										width={width >= 1024 ? '500' : '350'}
+										width={width >= 1024 ? '480' : '350'}
 										key={`page_${index + 1}`}
 										pageNumber={index + 1}
 									/>
@@ -55,8 +63,8 @@ const Legal = () => {
 					</div>
 				</div>
 			</div>
-		</section>
+		</main>
 	);
 };
 
-export default Legal;
+export default Blog;
