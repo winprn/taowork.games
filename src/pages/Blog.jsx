@@ -31,8 +31,8 @@ const Blog = () => {
 	}, []);
 
 	return (
-		<main className='flex flex-col items-center justify-center'>
-			<div className='container flex flex-col items-center justify-center'>
+		<main className='flex flex-col min-h-screen items-center'>
+			<div className='container flex flex-col items-center justify-center mb-10'>
 				<h1 className='text-2xl lg:text-3xl font-bold'>{blog[0].title}</h1>
 			</div>
 			<div className='Example'>

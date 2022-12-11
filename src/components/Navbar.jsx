@@ -6,7 +6,7 @@ import {
 	DocumentTextIcon,
 } from '@heroicons/react/24/outline';
 import logoURL from '../assets/logo.png';
-import { Outlet, Link, NavLink } from 'react-router-dom';
+import { Outlet, Link, NavLink, useLocation } from 'react-router-dom';
 
 const links = [
 	{
@@ -21,9 +21,19 @@ const links = [
 	},
 ];
 
+const ScrollToTop = () => {
+	const { pathname } = useLocation();
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, [pathname]);
+
+	return null;
+};
+
 function Navbar() {
 	return (
 		<>
+			<ScrollToTop />
 			<nav className='bg-white flex justify-center sticky top-0 z-10 border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900'>
 				<div className='container flex flex-wrap items-center justify-between'>
 					<a href='https://taowork.games/' className='flex items-center'>
@@ -98,6 +108,13 @@ function Navbar() {
 				</div>
 			</nav>
 			{<Outlet />}
+			<footer className='bg-black h-20 pt-4 text-white text-center'>
+				<h4 className='text-xl'>Copyright 2022 | TAOwork</h4>
+				<p className='text-lg'>
+					Contact us at:{' '}
+					<a href='mailto:taowork.hcmus@gmail.com'>taowork.hcmus@gmail.com</a>
+				</p>
+			</footer>
 		</>
 	);
 }

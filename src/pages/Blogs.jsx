@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import contract from '../assets/contract.png';
 import { getAllBlogs } from '../utils/getBlog';
 
 const data = `### ✌🏻✌🏻✌🏻Xin chào mọi người!! Tụi mình là TAOwork
@@ -43,7 +42,7 @@ const Blog = () => {
 			>
 				<ReactMarkdown children={data} components={components} />
 			</motion.div>
-			<section className='flex flex-col lg:flex-row gap-10 mb-20'>
+			<section className='mx-10 flex flex-col flex-wrap justify-center items-center lg:flex-row gap-10 mb-20'>
 				{blog.map((el, i) => {
 					return (
 						<motion.div
@@ -52,10 +51,14 @@ const Blog = () => {
 							transition={{ duration: 0.5 }}
 							viewport={{ once: true }}
 							whileInView={{ scale: 1, opacity: 1 }}
-							className='max-w-sm bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700'
+							className='max-w-sm min-h-[520px] bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-400'
 						>
 							<Link to={`/blog/${el._id}`}>
-								<img className='rounded-t-lg' src={contract} alt='' />
+								<img
+									className='rounded-t-lg min-h-[330px]'
+									src={el.blogImg}
+									alt=''
+								/>
 							</Link>
 							<div className='p-5'>
 								<Link to={`/blog/${el._id}`}>
@@ -68,7 +71,7 @@ const Blog = () => {
 								</p>
 								<Link
 									to={`/blog/${el._id}`}
-									className='inline-flex items-center px-3 py-2 text-md font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
+									className='inline-flex items-center px-3 py-2 text-md font-thin text-center text-white bg-gray-600 rounded-lg hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
 								>
 									Đọc thêm
 									<svg
